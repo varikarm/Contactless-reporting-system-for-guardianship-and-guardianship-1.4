@@ -53,8 +53,57 @@
 | 16 |  created_at |created_at |  yes |  date  |формат даты
 | 17 |  apdated_at | apdated_at | yes |  date  |формат даты
 
-### 3.1.3.	SQL-запрос для предметной области 1
+### 3.1.3.	SQL-запросы
+## Создание Базы данных:
 ```Sql
-create *
+CREATE DATABASE имя_БД;
 ```
 
+## Создание таблиц:
+```Sql
+CREATE TABLE название_таблицы;
+```
+
+## Заполнение таблицы:
+```Sql
+CREATE TABLE users
+(
+    users_id integer PRIMARY KEY,
+    users_name CHARACTER VARYING(30),
+    email CHARACTER VARYING(30),
+    password CHARACTER VARYING(30),
+    number CHARACTER VARYING(30),
+    updated_at DATE,
+    created_at_at DATE
+);
+```
+
+## Общий синтаксис установки внешнего ключа на уровне столбца:
+```Sql
+REFERENCES главная_таблица (столбец_главной_таблицы)
+    [ON DELETE {CASCADE|RESTRICT}]
+    [ON UPDATE {CASCADE|RESTRICT}]
+```
+## Общий синтаксис установки внешнего ключа на уровне таблицы:
+```Sql
+FOREIGN KEY (стобец1, столбец2, ... столбецN) 
+    REFERENCES главная_таблица (столбец_главной_таблицы1, столбец_главной_таблицы2, ... столбец_главной_таблицыN)
+    [ON DELETE {CASCADE|RESTRICT}]
+    [ON UPDATE {CASCADE|RESTRICT}]
+```
+## Связь таблиц посредством внешнего ключа:
+```Sql
+CREATE TABLE Customers
+(
+    Id SERIAL PRIMARY KEY,
+    Age INTEGER, 
+    FirstName VARCHAR(20) NOT NULL
+);
+  
+CREATE TABLE Orders
+(
+    Id SERIAL PRIMARY KEY,
+    CustomerId INTEGER REFERENCES Customers (Id),
+    Quantity INTEGER
+);
+```
