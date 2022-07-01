@@ -107,3 +107,7 @@ CREATE TABLE Orders
     Quantity INTEGER
 );
 ```
+## Вывод данных из таблицы:
+```Sql
+SELECT * FROM users;
+```
